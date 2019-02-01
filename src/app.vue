@@ -10,6 +10,15 @@
             <a href="https://github.com/HDIOES/4na-front">GITHUB</a>
         </div>
 
+        <news></news>
+
     </div>
 
 </template>
+
+<script>
+    import News from "./components/news.vue";
+    export default {
+        components: {News}
+    }
+</script>
