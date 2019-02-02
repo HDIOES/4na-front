@@ -1,11 +1,11 @@
 <template>
     <div>
-        <div class="news-component">{{name}}</div>
+        <div class="chpa-component">{{name}}</div>
     </div>
 </template>
 
 <style scoped>
-    .news-component {
+    .chpa-component {
         position: absolute;
         background-color: #E4FCDC;
         border-radius: 10px;
@@ -15,7 +15,7 @@
         display: inline-block;
         height: 600px;
         width: 45%;
-        left: 50px;
+        left: 950px;
         top: 100px;
     }
 </style>
@@ -23,10 +23,10 @@
 <script>
     export default {
         props: [],
-        name: 'news',
+        name: 'chpa',
         data() {
             return {
-                name: 'news',
+                name: 'chpa-component',
             };
         }
     }

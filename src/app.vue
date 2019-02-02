@@ -10,6 +10,7 @@
             <a href="https://github.com/HDIOES/4na-front">GITHUB</a>
         </div>
 
+        <chpa></chpa>
         <news></news>
 
     </div>
@@ -18,7 +19,9 @@
 
 <script>
     import News from "./components/news.vue";
+    import Chpa from "./components/chpa.vue";
+
     export default {
-        components: {News}
+        components: {News, Chpa}
     }
 </script>
