@@ -1,0 +1,41 @@
+{
+  "name": "4na-front",
+  "version": "0.0.1",
+  "description": "4na front",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --hot --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/HDIOES/4na-front.git"
+  },
+  "keywords": [
+    "4na"
+  ],
+  "author": "Ivan Timofeev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HDIOES/4na-front/issues"
+  },
+  "homepage": "https://github.com/HDIOES/4na-front#readme",
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "vue": "^2.5.22",
+    "vue-router": "^3.0.2"
+  },
+  "devDependencies": {
+    "css-loader": "^2.1.0",
+    "extract-text-webpack-plugin": "^4.0.0-alpha.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "style-loader": "^0.23.1",
+    "vue-loader": "^15.6.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.5.22",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  }
+}

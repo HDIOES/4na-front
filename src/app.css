@@ -1,0 +1,28 @@
+.fourna-header {
+    color: orange;
+    background-color: black;
+    height: 60px;
+}
+.cpa-text {
+    padding-left: 40px;
+    margin-top: 0px;
+    padding-top: 10px;
+    display: inline-block;
+}
+body {
+    border-width: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.newnews {
+    padding-left: 1100px;
+    display: inline-block;
+}
+.githublink {
+    padding-left: 25px;
+    display: inline-block;
+}
+.githublink a {
+    color: orange;
+}
