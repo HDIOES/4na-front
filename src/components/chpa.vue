@@ -1,6 +1,12 @@
 <template>
     <div>
-        <div class="chpa-component">{{name}}</div>
+        <div class="chpa-component">
+            {{name}}
+            <br/>
+            <a v-bind:href="url">Перейти на shikimori.org</a>
+            <br/>
+            <img v-bind:src="poster_url" alt="image" />
+        </div>
     </div>
 </template>
 
@@ -21,13 +27,26 @@
 </style>
 
 <script>
+    import axios from 'axios'
+
     export default {
         props: [],
         name: 'chpa',
         data() {
             return {
                 name: 'chpa-component',
+                url: 'chpa-component',
+                poster_url: 'chpa-component'
             };
+        },
+        mounted () {
+            axios
+                .get('http://localhost:10045/animes/random')
+                .then(response => {
+                    this.name = response.data.name;
+                    this.url = response.data.url;
+                    this.poster_url = response.data.poster_url;
+                });
         }
     }
 </script>
