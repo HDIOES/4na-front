@@ -11,7 +11,7 @@
         </div>
 
         <chpa></chpa>
-        <news></news>
+        <!--news></news-->
 
     </div>
 
