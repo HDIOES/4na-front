@@ -31,7 +31,7 @@
         border-color: #BEF6B9;
         display: inline-block;
         height: 600px;
-        width: 45%;
+        width: 800px;
         left: 950px;
         top: 100px;
     }
@@ -89,7 +89,7 @@
         methods: {
             search: function (event) {
                 axios
-                    .get('http://localhost:10045/animes/search', {
+                    .get('http://185.228.234.23:10045/animes/search', {
                         params: {
                             phrase: this.phrase
                         }

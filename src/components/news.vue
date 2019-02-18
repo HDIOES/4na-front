@@ -1,6 +1,10 @@
 <template>
     <div>
-        <div class="news-component">{{name}}</div>
+        <div class="news-component">
+            <div v-model="anime">
+                {{anime.name}}
+            </div>
+        </div>
     </div>
 </template>
 
@@ -14,20 +18,28 @@
         border-color: #BEF6B9;
         display: inline-block;
         height: 600px;
-        width: 45%;
+        width: 800px;
         left: 50px;
         top: 100px;
     }
 </style>
 
 <script>
+    import axios from 'axios'
+
     export default {
         props: [],
         name: 'news',
         data() {
             return {
-                name: 'news',
+                anime: {}
             };
+        },
+        mounted() {
+            axios.get("http://185.228.234.23:10045/animes/search")
+                .then(response => {
+                    this.anime = response.data;
+                })
         }
     }
 </script>
