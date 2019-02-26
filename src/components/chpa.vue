@@ -11,6 +11,7 @@
                 <div>Тип:</div>
                 <div>
                     <select class="chpa_combobox" v-model="kind">
+                        <option value=""></option>
                         <option value="ona">ona</option>
                         <option value="movie">movie</option>
                         <option value="ova">ova</option>
@@ -23,6 +24,7 @@
                 <div>Статус:</div>
                 <div>
                     <select class="chpa_combobox" v-model="status">
+                        <option value=""></option>
                         <option value="anons">anons</option>
                         <option value="ongoing">ongoing</option>
                         <option value="released">released</option>
@@ -33,6 +35,31 @@
                 <div>Название франшизы</div>
                 <div>
                     <input class="chpa_input_text" type="text" v-model="franchise" />
+                </div>
+            </div>
+            <div class="chpa_duration">
+                <div>Длительность:</div>
+                <div>
+                    <select class="chpa_combobox" v-model="duration">
+                        <option value=""></option>
+                        <option value="S">S</option>
+                        <option value="D">D</option>
+                        <option value="F">F</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chpa_rating">
+                <div>Рейтинг:</div>
+                <div>
+                    <select class="chpa_combobox" v-model="rating">
+                        <option value="none"></option>
+                        <option value="g">G</option>
+                        <option value="pg">PG</option>
+                        <option value="pg_13">PG-13</option>
+                        <option value="r">R</option>
+                        <option value="r_plus">R+</option>
+                        <option value="rx">RX</option>
+                    </select>
                 </div>
             </div>
             <div class="chpa_button">
@@ -141,12 +168,34 @@
         width: 150px;
         float: left;
     }
-    .chpa_button {
+    .chpa_duration {
         display: block;
         margin-top: 10px;
+        height: 80px;
+    }
+    .chpa_duration div {
+        display: inline;
+        margin-left: 50px;
+        width: 150px;
+        float: left;
+    }
+    .chpa_rating {
+        display: block;
+        margin-top: 10px;
+        height: 80px;
+    }
+    .chpa_rating div {
+        display: inline;
+        margin-left: 50px;
+        width: 150px;
+        float: left;
+    }
+    .chpa_button {
+        display: block;
+        margin-top: -20px;
     }
     .chpa_button div {
-        margin-left: 250px;
+        margin-left: 550px;
     }
     .chpa_animelist {
         display: block;
@@ -167,7 +216,9 @@
                 phrase: "",
                 kind: "",
                 status: "",
-                franchise: ""
+                franchise: "",
+                duration: "",
+                rating: ""
             };
         },
         methods: {
@@ -178,7 +229,9 @@
                             phrase: this.phrase === '' ? null : this.phrase,
                             kind: this.kind === '' ? null : this.kind,
                             status: this.status === '' ? null : this.status,
-                            franchise: this.franchise === '' ? null : this.franchise
+                            franchise: this.franchise === '' ? null : this.franchise,
+                            duration: this.duration === '' ? null : this.duration,
+                            rating: this.rating === '' ? null : this.rating
                         }
                     })
                     .then(response => {
