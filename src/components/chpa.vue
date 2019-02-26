@@ -8,9 +8,25 @@
                 </div>
             </div>
             <div class="chpa_kind">
-                <div class="chpa_kind_title">Тип:</div>
+                <div>Тип:</div>
                 <div>
-                    <input class="chpa_input_text" type="text" v-model="kind" />
+                    <select class="chpa_combobox" v-model="kind">
+                        <option value="ona">ona</option>
+                        <option value="movie">movie</option>
+                        <option value="ova">ova</option>
+                        <option value="special">special</option>
+                        <option value="tv">tv</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chpa_status">
+                <div>Статус:</div>
+                <div>
+                    <select class="chpa_combobox" v-model="status">
+                        <option value="anons">anons</option>
+                        <option value="ongoing">ongoing</option>
+                        <option value="released">released</option>
+                    </select>
                 </div>
             </div>
             <div class="chpa_button">
@@ -65,6 +81,16 @@
         background-color: green;
         color: white;
     }
+    .chpa_combobox {
+        width: 190px;
+        height: 40px;
+        text-indent: 10px;
+        border-radius: 20px;
+        border-style: solid;
+        border-color: #BEF6B9;
+        border-width: 5px;
+        background-color: white;
+    }
     .chpa_phrase {
         display: block;
         margin-top: 30px;
@@ -82,6 +108,17 @@
         height: 80px;
     }
     .chpa_kind div {
+        display: inline;
+        margin-left: 50px;
+        width: 150px;
+        float: left;
+    }
+    .chpa_status {
+        display: block;
+        margin-top: 10px;
+        height: 80px;
+    }
+    .chpa_status div {
         display: inline;
         margin-left: 50px;
         width: 150px;
@@ -111,7 +148,8 @@
             return {
                 animes: [],
                 phrase: "",
-                kind: ""
+                kind: "",
+                status: ""
             };
         },
         methods: {
@@ -119,8 +157,9 @@
                 axios
                     .get('http://it.shadowhd.ru/animes/search', {
                         params: {
-                            phrase: this.phrase,
-                            kind: this.kind
+                            phrase: this.phrase === ''? null : this.phrase,
+                            kind: this.kind === ''? null : this.kind,
+                            status: this.status === ''? null : this.status
                         }
                     })
                     .then(response => {
