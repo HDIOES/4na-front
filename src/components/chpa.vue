@@ -29,6 +29,12 @@
                     </select>
                 </div>
             </div>
+            <div class="chpa_franchise">
+                <div>Название франшизы</div>
+                <div>
+                    <input class="chpa_input_text" type="text" v-model="franchise" />
+                </div>
+            </div>
             <div class="chpa_button">
                 <div>
                     <button class="chpa_input_button" v-on:click="search">Найти</button>
@@ -124,6 +130,17 @@
         width: 150px;
         float: left;
     }
+    .chpa_franchise {
+        display: block;
+        margin-top: 10px;
+        height: 80px;
+    }
+    .chpa_franchise div {
+        display: inline;
+        margin-left: 50px;
+        width: 150px;
+        float: left;
+    }
     .chpa_button {
         display: block;
         margin-top: 10px;
@@ -149,7 +166,8 @@
                 animes: [],
                 phrase: "",
                 kind: "",
-                status: ""
+                status: "",
+                franchise: ""
             };
         },
         methods: {
@@ -157,9 +175,10 @@
                 axios
                     .get('http://it.shadowhd.ru/animes/search', {
                         params: {
-                            phrase: this.phrase === ''? null : this.phrase,
-                            kind: this.kind === ''? null : this.kind,
-                            status: this.status === ''? null : this.status
+                            phrase: this.phrase === '' ? null : this.phrase,
+                            kind: this.kind === '' ? null : this.kind,
+                            status: this.status === '' ? null : this.status,
+                            franchise: this.franchise === '' ? null : this.franchise
                         }
                     })
                     .then(response => {
