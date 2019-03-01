@@ -68,12 +68,16 @@
                 </div>
             </div>
             <div class="chpa_animelist">
-                <div v-for="a in animes">
-                    {{a.name}}
-                    <br/>
-                    <a v-bind:href="a.url">Перейти на shikimori.org</a>
-                    <br/>
-                    <img v-bind:src="a.poster_url" alt="image" />
+                <div class="chpa-anime" v-for="a in animes">
+                    <div>
+                         <div>{{a.name}}</div>
+                    <p>
+                        <a v-bind:href="a.url">Перейти на shikimori.org</a>
+                    </p>
+                    <div>
+                        <img v-bind:src="a.poster_url" width="300px" height="400px" alt="image" />
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,11 +92,11 @@
         border-style: solid;
         border-width: 5px;
         border-color: #BEF6B9;
-        display: inline-block;
-        height: 600px;
-        width: 800px;
-        left: 950px;
-        top: 100px;
+        display: block;
+        min-height: 600px;
+        width: 1600px;
+        left: 130px;
+        top: 180px;
     }
     .chpa_input_text {
         width: 180px;
@@ -192,14 +196,29 @@
     }
     .chpa_button {
         display: block;
-        margin-top: -20px;
+        margin-top: 10px;
+        height: 80px;
     }
     .chpa_button div {
-        margin-left: 550px;
+        margin-left: 250px;
     }
     .chpa_animelist {
+        position: relative;
         display: block;
-        left: 10px;
+        max-width: 1000px;
+        left: 550px;
+        top: -550px;
+    }
+    .chpa-anime {
+        display: inline-flex;
+        margin: 5px;
+        height: 500px;
+    }
+    .chpa-anime div div {
+        width: 300px;
+        display: block;
+        height: 50px;
+        word-break: break-all;
     }
 
 </style>

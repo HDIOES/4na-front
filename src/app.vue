@@ -11,7 +11,6 @@
         </div>
 
         <chpa></chpa>
-        <news></news>
 
     </div>
 
