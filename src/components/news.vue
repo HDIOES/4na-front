@@ -36,7 +36,7 @@
             };
         },
         mounted() {
-            axios.get("http://it.shadowhd.ru/animes/search")
+            axios.get("http://it.shadowhd.ru:10046/animes/search")
                 .then(response => {
                     this.anime = response.data;
                 })
