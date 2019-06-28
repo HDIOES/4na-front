@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="chpa_button">
-                <div>
+                <div class="chpa_inside_me_button">
                     <button class="chpa_input_button" v-on:click="search">Найти</button>
                 </div>
             </div>
@@ -219,6 +219,54 @@
         display: block;
         height: 50px;
         word-break: break-all;
+    }
+
+    @media (max-width: 1280px) {
+
+        body{
+            overflow-x:hidden;
+        }
+
+        .chpa-component{
+            position: relative;
+            display: block;
+            width: 100%;
+            left: 0px;
+            top: 0px;
+        }
+
+        .chpa_inside_me_button{
+                margin-left: 0!important;
+                width: 100%;
+        }
+
+        .chpa_input_button{
+            width:100%;
+        }
+        
+        .chpa-component div div{
+            width: 100%;
+            margin: 0;
+        }
+
+        .chpa-component div div input, .chpa-component div div select{
+            width: 100%;
+        }
+
+        .chpa_animelist{
+            top: 0px;
+            left: 0px;
+        }
+
+        .cpa-text{
+            padding: 0px;
+        }
+        
+        html, body {
+            overflow-x: hidden;
+        }
+
+        
     }
 
 </style>
