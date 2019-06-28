@@ -26,3 +26,24 @@ body {
 .githublink a {
     color: orange;
 }
+
+body{
+    width: 100%;
+}
+
+@media (max-width: 1280px) {
+
+    .cpa-text{
+        padding: 0px;
+    }
+
+    html{
+        width: 100%;
+    }
+
+    .newnews{
+        width: 100%;
+        padding: 0px;
+    }
+    
+}

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="chpa-content-container">
         <div class="chpa-component">
             <div class="chpa_phrase">
                 <div>Есть в названии:</div>
@@ -223,6 +223,10 @@
 
     @media (max-width: 1280px) {
 
+        .chpa-content-container{
+            padding: 14px;
+        }
+    
         body{
             overflow-x:hidden;
         }
@@ -231,8 +235,13 @@
             position: relative;
             display: block;
             width: 100%;
+            margin: auto;
             left: 0px;
             top: 0px;
+        }
+
+        .chpa_input_text{
+            width: 90% !important;
         }
 
         .chpa_inside_me_button{
@@ -263,7 +272,7 @@
         }
         
         html, body {
-            overflow-x: hidden;
+            overflow-x: hidden; 
         }
 
         
