@@ -243,7 +243,7 @@
         methods: {
             search: function (event) {
                 axios
-                    .get('http://it.shadowhd.ru:10046/animes/search', {
+                    .get('http://it.shadowhd.ru:10046/api/animes/search', {
                         params: {
                             phrase: this.phrase === '' ? null : this.phrase,
                             kind: this.kind === '' ? null : this.kind,
