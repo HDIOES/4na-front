@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <div class="news-component">
-            <div v-model="anime">
-                {{anime.name}}
-            </div>
+    <div class="news-component">
+        <div v-model="anime">
+            {{anime.name}}
         </div>
     </div>
 </template>

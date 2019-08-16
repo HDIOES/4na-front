@@ -1,5 +1,4 @@
 <template>
-    <div>
         <div class="chpa-component">
             <div class="chpa_phrase">
                 <div>Есть в названии:</div>
@@ -71,32 +70,30 @@
                 <div class="chpa-anime" v-for="a in animes">
                     <div>
                          <div>{{a.name}}</div>
-                    <p>
-                        <a v-bind:href="a.url">Перейти на shikimori.org</a>
-                    </p>
-                    <div>
-                        <img v-bind:src="a.poster_url" width="300px" height="400px" alt="image" />
-                    </div>
+                        <p>
+                            <a v-bind:href="a.url">Перейти на shikimori.org</a>
+                        </p>
+                        <div>
+                            <img v-bind:src="a.poster_url" width="300px" height="400px" alt="image" />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <style scoped>
     .chpa-component {
-        position: absolute;
-        background-color: #E4FCDC;
+        position: relative;
+        background-color: rgb(252, 220, 220);
         border-radius: 10px;
         border-style: solid;
         border-width: 5px;
         border-color: #BEF6B9;
-        display: block;
-        min-height: 600px;
-        width: 1600px;
-        left: 130px;
-        top: 180px;
+        display: inline-block;
+        width: 100%;
+        /*left: 130px;
+        top: 180px;*/
     }
     .chpa_input_text {
         width: 180px;

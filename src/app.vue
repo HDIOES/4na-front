@@ -1,7 +1,7 @@
 <template>
 
     <div class="fourna-header">
-        <h1 class="cpa-text">ЧЁПАЦАНЫАНИМЕ?Ф</h1>
+        <h1 class="cpa-text">ЧЕМАЦАНЫАНИМЕ.РФ бета!</h1>
 
         <div class="newnews">
             Оставить новость
@@ -10,7 +10,6 @@
             <a href="https://github.com/HDIOES/4na-front">GITHUB</a>
         </div>
 
-        <chpa></chpa>
 
     </div>
 
