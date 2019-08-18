@@ -27,7 +27,7 @@
 
     export default {
         props: [],
-        name: 'news',
+        name: 'Blog',
         data() {
             return {
                 anime: {}

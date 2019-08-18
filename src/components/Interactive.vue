@@ -225,7 +225,7 @@
 
     export default {
         props: [],
-        name: 'chpa',
+        name: 'Interactive',
         data() {
             return {
                 animes: [],
