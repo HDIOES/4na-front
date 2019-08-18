@@ -16,10 +16,16 @@
 </template>
 
 <script>
-    import News from "./components/news.vue";
-    import Chpa from "./components/chpa.vue";
+    import Header from "./components/Header.vue";
+    import Interactive from "./components/Interactive.vue";
+    import Blog from "./components/Blog.vue";
+    import Footer from "./components/Footer.vue";
 
     export default {
-        components: {News, Chpa}
+        name: "App",
+        components: {
+            appBlog: Blog, 
+            appInteractive: Interactive
+        }
     }
 </script>
