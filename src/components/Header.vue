@@ -1,6 +1,6 @@
 <template>
 
-    <div class="fourna-header">
+    <div class="chpa-header">
         <h1 class="cpa-text">ЧЕМАЦАНЫАНИМЕ.РФ бета!</h1>
 
         <div class="newnews">

@@ -1,14 +1,30 @@
 <template>
 
   <div id="app">
-
-    <appHeader></appHeader>
+      <app-header />
     
-    <appInteractive></appInteractive>
+    
+    <div class="chpa-content">
+      <app-interactive></app-interactive>
+      <app-footer></app-footer>
+    </div><div class="chpa-content">
+      <app-blog></app-blog>
+      <app-footer></app-footer>
+    </div>
 
   </div>
 
 </template>
+
+<style scoped>
+.chpa-content {
+  display: inline-block;
+  width: 50%;
+  margin-top: 100px;
+}
+
+
+</style>
 
 <script>
     import Header from "./components/Header.vue"

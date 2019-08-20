@@ -1,5 +1,5 @@
 <template>
-<div class="chpa-component">
+<div class="chpa-content-block">
     <div class="chpa_phrase">
         <div>Есть в названии:</div>
         <div>
@@ -83,22 +83,6 @@
 </template>
 
 <style scoped>
-    .chpa-component {
-        position: relative;
-        background-color: rgb(255, 255, 255);
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 1px;
-        border-color: rgb(255, 152, 0);
-        display: inline-block;
-        width: 50%;
-        box-sizing: border-box;
-        margin: 20px;
-        /*left: 130px;*/
-        top: 100px;
-
-        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    }
     .chpa_input_text {
         width: 180px;
         height: 30px;
