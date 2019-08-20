@@ -1,15 +1,15 @@
 <template>
 <div class="chpa-content-block">
-    <div class="chpa_phrase">
+    <div class="chpa-phrase">
         <div>Есть в названии:</div>
         <div>
-            <input class="chpa_input_text" type="text" v-model="phrase" />
+            <input class="chpa-input-text" type="text" v-model="phrase" />
         </div>
     </div>
-    <div class="chpa_kind">
+    <div class="chpa-kind">
         <div>Тип:</div>
         <div>
-            <select class="chpa_combobox" v-model="kind">
+            <select class="chpa-combobox" v-model="kind">
                 <option value=""></option>
                 <option value="ona">ona</option>
                 <option value="movie">movie</option>
@@ -19,10 +19,10 @@
             </select>
         </div>
     </div>
-    <div class="chpa_status">
+    <div class="chpa-status">
         <div>Статус:</div>
         <div>
-            <select class="chpa_combobox" v-model="status">
+            <select class="chpa-combobox" v-model="status">
                 <option value=""></option>
                 <option value="anons">anons</option>
                 <option value="ongoing">ongoing</option>
@@ -30,16 +30,16 @@
             </select>
         </div>
     </div>
-    <div class="chpa_franchise">
+    <div class="chpa-franchise">
         <div>Название франшизы</div>
         <div>
-            <input class="chpa_input_text" type="text" v-model="franchise" />
+            <input class="chpa-input-text" type="text" v-model="franchise" />
         </div>
     </div>
-    <div class="chpa_duration">
+    <div class="chpa-duration">
         <div>Длительность:</div>
         <div>
-            <select class="chpa_combobox" v-model="duration">
+            <select class="chpa-combobox" v-model="duration">
                 <option value=""></option>
                 <option value="S">S</option>
                 <option value="D">D</option>
@@ -47,26 +47,26 @@
             </select>
         </div>
     </div>
-    <div class="chpa_rating">
+    <div class="chpa-rating">
         <div>Рейтинг:</div>
         <div>
-            <select class="chpa_combobox" v-model="rating">
+            <select class="chpa-combobox" v-model="rating">
                 <option value="none"></option>
                 <option value="g">G</option>
                 <option value="pg">PG</option>
-                <option value="pg_13">PG-13</option>
+                <option value="pg-13">PG-13</option>
                 <option value="r">R</option>
-                <option value="r_plus">R+</option>
+                <option value="r-plus">R+</option>
                 <option value="rx">RX</option>
             </select>
         </div>
     </div>
-    <div class="chpa_button">
+    <div class="chpa-button">
         <div>
-            <button class="chpa_input_button" v-on:click="search">Найти</button>
+            <button class="chpa-input-button" v-on:click="search">Найти</button>
         </div>
     </div>
-    <div class="chpa_animelist">
+    <div class="chpa-animelist">
         <div class="chpa-anime" v-for="a in animes">
             <div>
                 <div>{{a.name}}</div>
@@ -74,7 +74,7 @@
                     <a v-bind:href="a.url">Перейти на shikimori.org</a>
                 </p>
                 <div>
-                    <img v-bind:src="a.poster_url" width="300px" height="400px" alt="image" />
+                    <img v-bind:src="a.poster-url" width="300px" height="400px" alt="image" />
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
 </template>
 
 <style scoped>
-    .chpa_input_text {
+    .chpa-input-text {
         width: 180px;
         height: 30px;
         text-indent: 10px;
@@ -92,7 +92,7 @@
         border-color: rgb(255, 152, 0);
         border-width: 1px;
     }
-    .chpa_input_button {
+    .chpa-input-button {
         width: 180px;
         height: 40px;
         font-size: 18px;
@@ -102,7 +102,7 @@
         background-color: rgb(255, 152, 0);
         color: white;
     }
-    .chpa_combobox {
+    .chpa-combobox {
         width: 190px;
         height: 40px;
         text-indent: 10px;
@@ -111,82 +111,81 @@
         border-color: rgb(255, 152, 0);
         border-width: 1px;
     }
-    .chpa_phrase {
+    .chpa-phrase {
         display: block;
         margin-top: 30px;
         height: 80px;
     }
-    .chpa_phrase div {
+    .chpa-phrase div {
         display: inline;
         margin-left: 50px;
         width: 150px;
         float: left;
     }
-    .chpa_kind {
+    .chpa-kind {
         display: block;
         margin-top: 10px;
         height: 80px;
     }
-    .chpa_kind div {
+    .chpa-kind div {
         display: inline;
         margin-left: 50px;
         width: 150px;
         float: left;
     }
-    .chpa_status {
+    .chpa-status {
         display: block;
         margin-top: 10px;
         height: 80px;
     }
-    .chpa_status div {
+    .chpa-status div {
         display: inline;
         margin-left: 50px;
         width: 150px;
         float: left;
     }
-    .chpa_franchise {
+    .chpa-franchise {
         display: block;
         margin-top: 10px;
         height: 80px;
     }
-    .chpa_franchise div {
+    .chpa-franchise div {
         display: inline;
         margin-left: 50px;
         width: 150px;
         float: left;
     }
-    .chpa_duration {
+    .chpa-duration {
         display: block;
         margin-top: 10px;
         height: 80px;
     }
-    .chpa_duration div {
+    .chpa-duration div {
         display: inline;
         margin-left: 50px;
         width: 150px;
         float: left;
     }
-    .chpa_rating {
+    .chpa-rating {
         display: block;
         margin-top: 10px;
         height: 80px;
     }
-    .chpa_rating div {
+    .chpa-rating div {
         display: inline;
         margin-left: 50px;
         width: 150px;
         float: left;
     }
-    .chpa_button {
+    .chpa-button {
         display: block;
         margin-top: 10px;
         height: 80px;
     }
-    .chpa_button div {
+    .chpa-button div {
         margin-left: 250px;
     }
-    .chpa_animelist {
-        position: relative;
+    .chpa-animelist {
         display: block;
         max-width: 1000px;
         left: 550px;
