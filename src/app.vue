@@ -3,13 +3,14 @@
   <div id="app">
       <app-header />
     
-    
-    <div class="chpa-content">
-      <app-interactive></app-interactive>
-      <app-footer></app-footer>
-    </div><div class="chpa-content">
-      <app-blog></app-blog>
-      <app-footer></app-footer>
+    <div class="chpa-main">
+      <div class="chpa-content chpa-content-left">
+        <app-interactive></app-interactive>
+        <app-footer></app-footer>
+      </div><div class="chpa-content chpa-content-right">
+        <app-blog></app-blog>
+        <app-footer></app-footer>
+      </div>
     </div>
 
   </div>
@@ -17,11 +18,6 @@
 </template>
 
 <style scoped>
-.chpa-content {
-  display: inline-block;
-  width: 50%;
-  margin-top: 100px;
-}
 
 
 </style>

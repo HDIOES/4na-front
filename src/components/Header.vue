@@ -1,7 +1,7 @@
 <template>
 
     <div class="chpa-header">
-        <h1 class="cpa-text">ЧЕМАЦАНЫАНИМЕ.РФ бета!</h1>
+        <h1 class="cpa-text">ЧЕПАЦАНЫАНИМЕ.РФ альфа!</h1>
 
         <div class="newnews">
             Оставить новость
