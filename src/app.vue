@@ -1,26 +1,40 @@
 <template>
 
-    <div class="fourna-header">
-        <h1 class="cpa-text">ЧЁПАЦАНЫАНИМЕ?Ф</h1>
-
-        <div class="newnews">
-            Оставить новость
-        </div>
-        <div class="githublink">
-            <a href="https://github.com/HDIOES/4na-front">GITHUB</a>
-        </div>
-
-        <chpa></chpa>
-
+  <div id="app">
+      <app-header />
+    
+    <div class="chpa-main">
+      <div class="chpa-content chpa-content-left">
+        <app-interactive></app-interactive>
+        <app-footer></app-footer>
+      </div><div class="chpa-content chpa-content-right">
+        <app-blog></app-blog>
+        <app-footer></app-footer>
+      </div>
     </div>
+
+  </div>
 
 </template>
 
+<style scoped>
+
+
+</style>
+
 <script>
-    import News from "./components/news.vue";
-    import Chpa from "./components/chpa.vue";
+    import Header from "./components/Header.vue"
+    import Interactive from "./components/Interactive.vue"
+    import Blog from "./components/Blog.vue"
+    import Footer from "./components/Footer.vue"
 
     export default {
-        components: {News, Chpa}
+        name: "app",
+        components: {
+            appHeader: Header, 
+            appInteractive: Interactive,
+            appBlog: Blog, 
+            appFooter: Footer, 
+        }
     }
 </script>
