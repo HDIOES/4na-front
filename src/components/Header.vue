@@ -5,11 +5,11 @@
 
         <nav>
             <div>
-                Оставить новость
+                <a href="">Оставить новость</a>
+            </div><div>
+                <a href="https://github.com/HDIOES/4na-front" target="_blank">GITHUB</a>
             </div>
-            <div>
-                <a href="https://github.com/HDIOES/4na-front">GITHUB</a>
-            </div>
+            
         </nav>
 
     </div>
@@ -17,10 +17,12 @@
 
 <style scoped>
 .chpa-text {
+    font-size: 1.6em;
     margin-left: 20px;
     padding-top: 10px;
     display: inline-block;
 }
+
 nav {
     right: 0;
     position: absolute;
@@ -30,7 +32,29 @@ nav {
 }
 nav div {
     display: inline;
+    margin: 20px;
 }
+
+nav:after
+{
+content:"";
+display:inline-block;
+height:100%;
+width:0px;
+overflow:hidden;
+vertical-align:middle;
+}
+
+a {
+    color: rgb(255, 152, 0);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(3, 169, 244);
+    text-decoration: none;
+}
+
 </style>
 
 <script>
