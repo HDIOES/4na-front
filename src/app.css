@@ -6,6 +6,7 @@
 }
 
 body {
+    font-family: 'Comfortaa', cursive;
     background-color: rgb(255, 255, 255);
 }
 
@@ -14,6 +15,7 @@ body {
     background-color: rgb(255, 255, 255);
     height: 50px;
     width: 100%;
+    font-weight: 600;
 
     z-index: 9999;
     position: fixed;
@@ -24,7 +26,7 @@ body {
     border-width: 0;
     border-bottom-width: 1px;
 
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
 }
 
 

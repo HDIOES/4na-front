@@ -1,36 +1,80 @@
 <template>
 
     <div class="chpa-header">
-        <h1 class="chpa-text">ЧЕПАЦАНЫАНИМЕ.РФ альфа!</h1>
+        <h1><a href=""><span>ЧЕ</span>ПАЦАНЫ<span>АНИМЕ.РФ</span></a> альфа!</h1>
 
         <nav>
-            <div>
-                Оставить новость
-            </div>
-            <div>
-                <a href="https://github.com/HDIOES/4na-front">GITHUB</a>
-            </div>
+            <ul><li>
+                <a href="">Оставить новость</a>
+            </li><li>
+                <a href="https://github.com/HDIOES/4na-front" target="_blank">GITHUB</a>
+            </li>
+            </ul>
+            
         </nav>
 
     </div>
 </template>
 
 <style scoped>
-.chpa-text {
-    margin-left: 20px;
-    padding-top: 10px;
-    display: inline-block;
+h1 {
+    font-size: 1.6em;
+    float:left;
+    margin: 0 20px;
+    padding: 0.7rem 0;
 }
+
+h1 a span {
+    color: rgb(239, 108, 0);
+}
+
+h1 a:hover {
+    color: rgb(79, 193, 246);
+}
+
+h1 a:hover span {
+    color: #03A9F4;
+}
+
 nav {
     right: 0;
-    position: absolute;
     height: 100%;
-    display: inline-block;
+    float: right;
     
 }
-nav div {
+
+nav ul {
     display: inline;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav:after
+{
+    content:"";
+    display:inline-block;
+    height:100%;
+    width:0px;
+    overflow:hidden;
+    vertical-align:middle;
+}
+
+a {
+    color: rgb(255, 152, 0);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(3, 169, 244);
+    text-decoration: none;
+}
+
 </style>
 
 <script>
