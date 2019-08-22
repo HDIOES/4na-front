@@ -1,7 +1,7 @@
 <template>
 
     <div class="chpa-header">
-        <h1><a href=""><span class="chpa-gays">ЧЕ</span>ПАЦАНЫ<span class="chpa-gays">АНИМЕ.РФ</span></a> альфа!</h1>
+        <h1><a href=""><span>ЧЕ</span>ПАЦАНЫ<span>АНИМЕ.РФ</span></a> альфа!</h1>
 
         <nav>
             <ul><li>
