@@ -4,11 +4,12 @@
         <h1><a href=""><span class="chpa-gays">ЧЕ</span>ПАЦАНЫ<span class="chpa-gays">АНИМЕ.РФ</span></a> альфа!</h1>
 
         <nav>
-            <div>
+            <ul><li>
                 <a href="">Оставить новость</a>
-            </div><div>
+            </li><li>
                 <a href="https://github.com/HDIOES/4na-front" target="_blank">GITHUB</a>
-            </div>
+            </li>
+            </ul>
             
         </nav>
 
@@ -28,7 +29,7 @@ h1 a span {
 }
 
 h1 a:hover {
-    color: #4FC3F7;
+    color: rgb(79, 193, 246);
 }
 
 h1 a:hover span {
@@ -41,19 +42,27 @@ nav {
     float: right;
     
 }
-nav div {
+
+nav ul {
+    display: inline;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
     display: inline;
     margin: 0 20px;
 }
 
 nav:after
 {
-content:"";
-display:inline-block;
-height:100%;
-width:0px;
-overflow:hidden;
-vertical-align:middle;
+    content:"";
+    display:inline-block;
+    height:100%;
+    width:0px;
+    overflow:hidden;
+    vertical-align:middle;
 }
 
 a {
