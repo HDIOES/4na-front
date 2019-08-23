@@ -1,7 +1,7 @@
 <template>
 
     <div class="chpa-header">
-        <h1><a href=""><span>ЧЕ</span>ПАЦАНЫ<span>АНИМЕ.РФ</span></a> альфа!</h1>
+        <div class="chpa-logo"><a href=""><span>ЧЕ</span>ПАЦАНЫ<span>АНИМЕ.РФ</span></a> альфа!</div>
 
         <nav>
             <ul><li>
@@ -17,22 +17,23 @@
 </template>
 
 <style scoped>
-h1 {
+.chpa-logo {
     font-size: 1.6em;
     float:left;
     margin: 0 20px;
     padding: 0.7rem 0;
+    white-space: nowrap;
 }
 
-h1 a span {
+.chpa-logo a span {
     color: rgb(239, 108, 0);
 }
 
-h1 a:hover {
+.chpa-logo a:hover {
     color: rgb(79, 193, 246);
 }
 
-h1 a:hover span {
+.chpa-logo a:hover span {
     color: #03A9F4;
 }
 
@@ -41,6 +42,7 @@ nav {
     height: 100%;
     float: right;
     
+    font-weight: 600;
 }
 
 nav ul {
