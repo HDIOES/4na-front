@@ -74,7 +74,7 @@
                     <a v-bind:href="a.url">Перейти на shikimori.org</a>
                 </p>
                 <div>
-                    <img v-bind:src="a.poster-url" width="300px" height="400px" alt="image" />
+                    <img v-bind:src="a.poster_url" width="300px" height="400px" alt="image" />
                 </div>
             </div>
         </div>
@@ -225,7 +225,7 @@
         methods: {
             search: function (event) {
                 axios
-                    .get('http://it.shadowhd.ru:10046/api/animes/search', {
+                    .get('/api/animes/search', {
                         params: {
                             phrase: this.phrase === '' ? null : this.phrase,
                             kind: this.kind === '' ? null : this.kind,
