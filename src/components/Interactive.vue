@@ -5,13 +5,13 @@
         <div>
             <div>Есть в названии:</div>
             <div>
-                <input class="chpa-input" type="text" name="phrase" v-model="p.phrase" />
+                <input class="chpa-input" type="text" name="phrase" v-model="query.phrase" />
             </div>
         </div>
         <div>
             <div>Тип:</div>
             <div>
-                <select class="chpa-input" name="kind" v-model="p.kind">
+                <select class="chpa-input" name="kind" v-model="query.kind">
                     <option value=""></option>
                     <option value="ona">ona</option>
                     <option value="movie">movie</option>
@@ -24,7 +24,7 @@
         <div>
             <div>Статус:</div>
             <div>
-                <select class="chpa-input" name="status" v-model="p.status">
+                <select class="chpa-input" name="status" v-model="query.status">
                     <option value=""></option>
                     <option value="anons">anons</option>
                     <option value="ongoing">ongoing</option>
@@ -35,13 +35,13 @@
         <div>
             <div>Название франшизы</div>
             <div>
-                <input class="chpa-input" type="text" name="franchise" v-model="p.franchise" />
+                <input class="chpa-input" type="text" name="franchise" v-model="query.franchise" />
             </div>
         </div>
         <div>
             <div>Длительность:</div>
             <div>
-                <select class="chpa-input" name="duration" v-model="p.duration">
+                <select class="chpa-input" name="duration" v-model="query.duration">
                     <option value=""></option>
                     <option value="S">S</option>
                     <option value="D">D</option>
@@ -52,7 +52,7 @@
         <div>
             <div>Рейтинг:</div>
             <div>
-                <select class="chpa-input" name="rating" v-model="p.rating">
+                <select class="chpa-input" name="rating" v-model="query.rating">
                     <option value="none"></option>
                     <option value="g">G</option>
                     <option value="pg">PG</option>
@@ -151,7 +151,7 @@
         data() {
             return {
                 animes: [],
-                p: {
+                query: {
                     phrase: "",
                     kind: "",
                     status: "",
@@ -171,12 +171,12 @@
                 axios
                     .get('/api/animes/search', {
                         params: {
-                            phrase: this.p.phrase === '' ? null : this.p.phrase,
-                            kind: this.p.kind === '' ? null : this.p.kind,
-                            status: this.p.status === '' ? null : this.p.status,
-                            franchise: this.p.franchise === '' ? null : this.p.franchise,
-                            duration: this.p.duration === '' ? null : this.p.duration,
-                            rating: this.p.rating === '' ? null : this.p.rating
+                            phrase: this.query.phrase === '' ? null : this.query.phrase,
+                            kind: this.query.kind === '' ? null : this.query.kind,
+                            status: this.query.status === '' ? null : this.query.status,
+                            franchise: this.query.franchise === '' ? null : this.query.franchise,
+                            duration: this.query.duration === '' ? null : this.query.duration,
+                            rating: this.query.rating === '' ? null : this.query.rating
                         }
                     })
                     .then(response => {
@@ -194,12 +194,12 @@
                 axios
                     .get('/api/animes/random', {
                         params: {
-                            phrase: this.p.phrase === '' ? null : this.p.phrase,
-                            kind: this.p.kind === '' ? null : this.p.kind,
-                            status: this.p.status === '' ? null : this.p.status,
-                            franchise: this.p.franchise === '' ? null : this.p.franchise,
-                            duration: this.p.duration === '' ? null : this.p.duration,
-                            rating: this.p.rating === '' ? null : this.p.rating
+                            phrase: this.query.phrase === '' ? null : this.query.phrase,
+                            kind: this.query.kind === '' ? null : this.query.kind,
+                            status: this.query.status === '' ? null : this.query.status,
+                            franchise: this.query.franchise === '' ? null : this.query.franchise,
+                            duration: this.query.duration === '' ? null : this.query.duration,
+                            rating: this.query.rating === '' ? null : this.query.rating
                         }
                     })
                     .then(response => {
