@@ -63,7 +63,7 @@
                 </select>
             </div>
         </div>
-        <button type="submit" class="chpa-input chpa-input-button" v-on:click="search" >Найти</button>
+        <button type="submit" class="chpa-input chpa-input-button">Найти</button>
     </form>
 
 </div>
