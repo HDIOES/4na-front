@@ -2,72 +2,68 @@
 <div>
 <div class="chpa-content-block">
     <form v-on:submit.prevent="onSubmit" method="GET" action="/api/animes/search" >
-    <div class="chpa-phrase">
-        <div>Есть в названии:</div>
         <div>
-            <input class="chpa-input-text" type="text" name="phrase" v-model="p.phrase" />
+            <div>Есть в названии:</div>
+            <div>
+                <input class="chpa-input" type="text" name="phrase" v-model="p.phrase" />
+            </div>
         </div>
-    </div>
-    <div class="chpa-kind">
-        <div>Тип:</div>
         <div>
-            <select class="chpa-combobox" name="kind" v-model="p.kind">
-                <option value=""></option>
-                <option value="ona">ona</option>
-                <option value="movie">movie</option>
-                <option value="ova">ova</option>
-                <option value="special">special</option>
-                <option value="tv">tv</option>
-            </select>
+            <div>Тип:</div>
+            <div>
+                <select class="chpa-input" name="kind" v-model="p.kind">
+                    <option value=""></option>
+                    <option value="ona">ona</option>
+                    <option value="movie">movie</option>
+                    <option value="ova">ova</option>
+                    <option value="special">special</option>
+                    <option value="tv">tv</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="chpa-status">
-        <div>Статус:</div>
         <div>
-            <select class="chpa-combobox" name="status" v-model="p.status">
-                <option value=""></option>
-                <option value="anons">anons</option>
-                <option value="ongoing">ongoing</option>
-                <option value="released">released</option>
-            </select>
+            <div>Статус:</div>
+            <div>
+                <select class="chpa-input" name="status" v-model="p.status">
+                    <option value=""></option>
+                    <option value="anons">anons</option>
+                    <option value="ongoing">ongoing</option>
+                    <option value="released">released</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="chpa-franchise">
-        <div>Название франшизы</div>
         <div>
-            <input class="chpa-input-text" type="text" name="franchise" v-model="p.franchise" />
+            <div>Название франшизы</div>
+            <div>
+                <input class="chpa-input" type="text" name="franchise" v-model="p.franchise" />
+            </div>
         </div>
-    </div>
-    <div class="chpa-duration">
-        <div>Длительность:</div>
         <div>
-            <select class="chpa-combobox" name="duration" v-model="p.duration">
-                <option value=""></option>
-                <option value="S">S</option>
-                <option value="D">D</option>
-                <option value="F">F</option>
-            </select>
+            <div>Длительность:</div>
+            <div>
+                <select class="chpa-input" name="duration" v-model="p.duration">
+                    <option value=""></option>
+                    <option value="S">S</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="chpa-rating">
-        <div>Рейтинг:</div>
         <div>
-            <select class="chpa-combobox" name="rating" v-model="p.rating">
-                <option value="none"></option>
-                <option value="g">G</option>
-                <option value="pg">PG</option>
-                <option value="pg-13">PG-13</option>
-                <option value="r">R</option>
-                <option value="r-plus">R+</option>
-                <option value="rx">RX</option>
-            </select>
+            <div>Рейтинг:</div>
+            <div>
+                <select class="chpa-input" name="rating" v-model="p.rating">
+                    <option value="none"></option>
+                    <option value="g">G</option>
+                    <option value="pg">PG</option>
+                    <option value="pg-13">PG-13</option>
+                    <option value="r">R</option>
+                    <option value="r-plus">R+</option>
+                    <option value="rx">RX</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="chpa-button">
-        <div>
-            <button type="submit" class="chpa-input-button" v-on:click="search" >Найти</button>
-        </div>
-    </div>
+        <button type="submit" class="chpa-input chpa-input-button" v-on:click="search" >Найти</button>
     </form>
 
 </div>
@@ -96,108 +92,40 @@
 </template>
 
 <style scoped>
-    .chpa-input-text {
+    .chpa-input {
         width: 180px;
         height: 30px;
-        text-indent: 10px;
+
         border-radius: 5px;
         border-style: solid;
         border-color: rgb(255, 152, 0);
         border-width: 1px;
+        
+        font-size: 1rem;
     }
+
     .chpa-input-button {
-        width: 180px;
-        height: 40px;
-        font-size: 18px;
-        border-radius: 20px;
-        text-indent: 10px;
+        border-radius: 5px;
         border-style: none;
         background-color: rgb(255, 152, 0);
         color: white;
+
+        height: auto;
+        padding: 0.5rem;
+        font-size: 1.2rem;
+
+        
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     }
-    .chpa-combobox {
-        width: 190px;
-        height: 40px;
-        text-indent: 10px;
-        border-radius: 5px;
-        border-style: solid;
-        border-color: rgb(255, 152, 0);
-        border-width: 1px;
+
+    .chpa-input-button:hover {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     }
-    .chpa-phrase {
-        display: block;
-        margin-top: 30px;
-        height: 80px;
+
+    form div {
+        margin-bottom: 0.5rem;
     }
-    .chpa-phrase div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-kind {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-kind div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-status {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-status div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-franchise {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-franchise div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-duration {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-duration div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-rating {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-rating div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-button {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-button div {
-        margin-left: 250px;
-    }
+
     .chpa-animelist {
         display: block;
         max-width: 1000px;
