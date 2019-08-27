@@ -1,206 +1,143 @@
 <template>
+<div>
 <div class="chpa-content-block">
-    <div class="chpa-phrase">
-        <div>Есть в названии:</div>
+    <form v-on:submit.prevent="onSubmit" method="GET" action="/api/animes/search" >
         <div>
-            <input class="chpa-input-text" type="text" v-model="phrase" />
-        </div>
-    </div>
-    <div class="chpa-kind">
-        <div>Тип:</div>
-        <div>
-            <select class="chpa-combobox" v-model="kind">
-                <option value=""></option>
-                <option value="ona">ona</option>
-                <option value="movie">movie</option>
-                <option value="ova">ova</option>
-                <option value="special">special</option>
-                <option value="tv">tv</option>
-            </select>
-        </div>
-    </div>
-    <div class="chpa-status">
-        <div>Статус:</div>
-        <div>
-            <select class="chpa-combobox" v-model="status">
-                <option value=""></option>
-                <option value="anons">anons</option>
-                <option value="ongoing">ongoing</option>
-                <option value="released">released</option>
-            </select>
-        </div>
-    </div>
-    <div class="chpa-franchise">
-        <div>Название франшизы</div>
-        <div>
-            <input class="chpa-input-text" type="text" v-model="franchise" />
-        </div>
-    </div>
-    <div class="chpa-duration">
-        <div>Длительность:</div>
-        <div>
-            <select class="chpa-combobox" v-model="duration">
-                <option value=""></option>
-                <option value="S">S</option>
-                <option value="D">D</option>
-                <option value="F">F</option>
-            </select>
-        </div>
-    </div>
-    <div class="chpa-rating">
-        <div>Рейтинг:</div>
-        <div>
-            <select class="chpa-combobox" v-model="rating">
-                <option value="none"></option>
-                <option value="g">G</option>
-                <option value="pg">PG</option>
-                <option value="pg-13">PG-13</option>
-                <option value="r">R</option>
-                <option value="r-plus">R+</option>
-                <option value="rx">RX</option>
-            </select>
-        </div>
-    </div>
-    <div class="chpa-button">
-        <div>
-            <button class="chpa-input-button" v-on:click="search">Найти</button>
-        </div>
-    </div>
-    <div class="chpa-animelist">
-        <div class="chpa-anime" v-for="a in animes">
+            <div>Есть в названии:</div>
             <div>
-                <div>{{a.name}}</div>
-                <p>
-                    <a v-bind:href="a.url">Перейти на shikimori.org</a>
-                </p>
-                <div>
-                    <img v-bind:src="a.poster_url" width="300px" height="400px" alt="image" />
-                </div>
+                <input class="chpa-input" type="text" name="phrase" v-model="query.phrase" />
             </div>
         </div>
-    </div>
+        <div>
+            <div>Тип:</div>
+            <div>
+                <select class="chpa-input" name="kind" v-model="query.kind">
+                    <option value=""></option>
+                    <option value="ona">ona</option>
+                    <option value="movie">movie</option>
+                    <option value="ova">ova</option>
+                    <option value="special">special</option>
+                    <option value="tv">tv</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div>Статус:</div>
+            <div>
+                <select class="chpa-input" name="status" v-model="query.status">
+                    <option value=""></option>
+                    <option value="anons">anons</option>
+                    <option value="ongoing">ongoing</option>
+                    <option value="released">released</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div>Название франшизы</div>
+            <div>
+                <input class="chpa-input" type="text" name="franchise" v-model="query.franchise" />
+            </div>
+        </div>
+        <div>
+            <div>Длительность:</div>
+            <div>
+                <select class="chpa-input" name="duration" v-model="query.duration">
+                    <option value=""></option>
+                    <option value="S">S</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div>Рейтинг:</div>
+            <div>
+                <select class="chpa-input" name="rating" v-model="query.rating">
+                    <option value="none"></option>
+                    <option value="g">G</option>
+                    <option value="pg">PG</option>
+                    <option value="pg_13">PG-13</option>
+                    <option value="r">R</option>
+                    <option value="r_plus">R+</option>
+                    <option value="rx">RX</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="chpa-input chpa-input-button">НАЙТИ</button>
+        <button type="button" class="chpa-input chpa-input-button chpa-input-random" v-on:click="random">РАНДОМ!</button>
+    </form>
+
+</div>
+
+<div class="chpa-content-block" v-show="status">
+    <div v-show="status=='loading'">Загрузка...</div>
+    <div v-show="status=='empty'">Ничего не нашлось :с<br/>Может стоит уточнить запрос?</div>
+
+    <table v-show="animes" class="chpa-animelist">
+        <tr v-for="a in animes" v-bind:key="a.shiki_id">
+            <td>
+                <img v-bind:src="a.poster_url" width="48px" alt="image" />
+            </td>
+            <td>{{a.name}}</td>
+            <td>
+                <a v-bind:href="a.url">Перейти на shikimori.org</a>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
 </div>
 </template>
 
 <style scoped>
-    .chpa-input-text {
+    .chpa-input {
         width: 180px;
         height: 30px;
-        text-indent: 10px;
+
         border-radius: 5px;
         border-style: solid;
         border-color: rgb(255, 152, 0);
         border-width: 1px;
+        
+        font-size: 1rem;
     }
+
     .chpa-input-button {
-        width: 180px;
-        height: 40px;
-        font-size: 18px;
-        border-radius: 20px;
-        text-indent: 10px;
+        border-radius: 5px;
         border-style: none;
         background-color: rgb(255, 152, 0);
         color: white;
+
+        height: auto;
+        padding: 0.5rem;
+        margin: 0 0.5rem;
+        font-size: 1.2rem;
+
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     }
-    .chpa-combobox {
-        width: 190px;
-        height: 40px;
-        text-indent: 10px;
-        border-radius: 5px;
-        border-style: solid;
-        border-color: rgb(255, 152, 0);
-        border-width: 1px;
+
+    .chpa-input-button:hover {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     }
-    .chpa-phrase {
-        display: block;
-        margin-top: 30px;
-        height: 80px;
+
+    .chpa-input-random {
+        background-color: rgb(79, 193, 246);
     }
-    .chpa-phrase div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
+
+    form div {
+        margin-bottom: 0.5rem;
     }
-    .chpa-kind {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-kind div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-status {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-status div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-franchise {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-franchise div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-duration {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-duration div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-rating {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-rating div {
-        display: inline;
-        margin-left: 50px;
-        width: 150px;
-        float: left;
-    }
-    .chpa-button {
-        display: block;
-        margin-top: 10px;
-        height: 80px;
-    }
-    .chpa-button div {
-        margin-left: 250px;
-    }
+
     .chpa-animelist {
-        display: block;
-        max-width: 1000px;
-        left: 550px;
-        top: -550px;
+        vertical-align: middle;
     }
-    .chpa-anime {
-        display: inline-flex;
-        margin: 5px;
-        height: 500px;
-    }
-    .chpa-anime div div {
-        width: 300px;
-        display: block;
-        height: 50px;
-        word-break: break-all;
+    
+    .chpa-animelist tr {
+        height: 100px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.2);
+        border-bottom-width: 1px;
     }
 
 </style>
@@ -214,31 +151,76 @@
         data() {
             return {
                 animes: [],
-                phrase: "",
-                kind: "",
+                query: {
+                    phrase: "",
+                    kind: "",
+                    status: "",
+                    franchise: "",
+                    duration: "",
+                    rating: "",
+                },
+
                 status: "",
-                franchise: "",
-                duration: "",
-                rating: ""
+                searchArray: false,
             };
         },
         methods: {
             search: function (event) {
+                this.status = "loading";
+                this.searchArray = true;
                 axios
                     .get('/api/animes/search', {
                         params: {
-                            phrase: this.phrase === '' ? null : this.phrase,
-                            kind: this.kind === '' ? null : this.kind,
-                            status: this.status === '' ? null : this.status,
-                            franchise: this.franchise === '' ? null : this.franchise,
-                            duration: this.duration === '' ? null : this.duration,
-                            rating: this.rating === '' ? null : this.rating
+                            phrase: this.query.phrase === '' ? null : this.query.phrase,
+                            kind: this.query.kind === '' ? null : this.query.kind,
+                            status: this.query.status === '' ? null : this.query.status,
+                            franchise: this.query.franchise === '' ? null : this.query.franchise,
+                            duration: this.query.duration === '' ? null : this.query.duration,
+                            rating: this.query.rating === '' ? null : this.query.rating
                         }
                     })
                     .then(response => {
-                        this.animes = response.data;
+                        if (response.data.length == 0) {
+                            this.status = "empty";
+                        } else {
+                            this.animes = response.data;
+                            this.status = "ready";
+                        }
                     });
-            }
+
+            },
+            random: function (event) {
+                this.status = "loading";
+                axios
+                    .get('/api/animes/random', {
+                        params: {
+                            phrase: this.query.phrase === '' ? null : this.query.phrase,
+                            kind: this.query.kind === '' ? null : this.query.kind,
+                            status: this.query.status === '' ? null : this.query.status,
+                            franchise: this.query.franchise === '' ? null : this.query.franchise,
+                            duration: this.query.duration === '' ? null : this.query.duration,
+                            rating: this.query.rating === '' ? null : this.query.rating
+                        }
+                    })
+                    .then(response => {
+                        if (response.data.length == 0) {
+                            this.status = "empty";
+                        } else {
+                            if (this.searchArray) {
+                                this.animes = [response.data];
+                                this.searchArray = false;
+                            }
+                            else {
+                                this.animes = [response.data].concat(this.animes);
+                            }
+                            this.status = "ready";
+                        }
+                    });
+
+            },
+            onSubmit () {
+                this.search();
+            },
         },
         mounted () {
 
