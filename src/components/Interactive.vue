@@ -1,4 +1,5 @@
 <template>
+<div>
 <div class="chpa-content-block">
     <div class="chpa-phrase">
         <div>Есть в названии:</div>
@@ -66,6 +67,11 @@
             <button class="chpa-input-button" v-on:click="search">Найти</button>
         </div>
     </div>
+
+</div>
+
+<div class="chpa-content-block">
+    
     <div class="chpa-animelist">
         <div class="chpa-anime" v-for="a in animes">
             <div>
@@ -79,6 +85,9 @@
             </div>
         </div>
     </div>
+
+</div>
+
 </div>
 </template>
 
