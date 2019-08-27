@@ -56,9 +56,9 @@
                     <option value="none"></option>
                     <option value="g">G</option>
                     <option value="pg">PG</option>
-                    <option value="pg-13">PG-13</option>
+                    <option value="pg_13">PG-13</option>
                     <option value="r">R</option>
-                    <option value="r-plus">R+</option>
+                    <option value="r_plus">R+</option>
                     <option value="rx">RX</option>
                 </select>
             </div>
@@ -175,8 +175,6 @@
                         if (response.data.length == 0) {
                             this.status = "empty";
                         } else {
-                            //TODO Ограничение на список тайтлов, пока грубый, т.к. меню навигации всё равно нет
-                            if (response.data.length > 10) {response.data.length = 10}
                             this.animes = response.data;
                             this.status = "ready";
                         }
