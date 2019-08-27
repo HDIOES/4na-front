@@ -4,13 +4,13 @@
     <div class="chpa-phrase">
         <div>Есть в названии:</div>
         <div>
-            <input class="chpa-input-text" type="text" v-model="phrase" />
+            <input class="chpa-input-text" type="text" v-model="p.phrase" />
         </div>
     </div>
     <div class="chpa-kind">
         <div>Тип:</div>
         <div>
-            <select class="chpa-combobox" v-model="kind">
+            <select class="chpa-combobox" v-model="p.kind">
                 <option value=""></option>
                 <option value="ona">ona</option>
                 <option value="movie">movie</option>
@@ -23,7 +23,7 @@
     <div class="chpa-status">
         <div>Статус:</div>
         <div>
-            <select class="chpa-combobox" v-model="status">
+            <select class="chpa-combobox" v-model="p.status">
                 <option value=""></option>
                 <option value="anons">anons</option>
                 <option value="ongoing">ongoing</option>
@@ -34,13 +34,13 @@
     <div class="chpa-franchise">
         <div>Название франшизы</div>
         <div>
-            <input class="chpa-input-text" type="text" v-model="franchise" />
+            <input class="chpa-input-text" type="text" v-model="p.franchise" />
         </div>
     </div>
     <div class="chpa-duration">
         <div>Длительность:</div>
         <div>
-            <select class="chpa-combobox" v-model="duration">
+            <select class="chpa-combobox" v-model="p.duration">
                 <option value=""></option>
                 <option value="S">S</option>
                 <option value="D">D</option>
@@ -51,7 +51,7 @@
     <div class="chpa-rating">
         <div>Рейтинг:</div>
         <div>
-            <select class="chpa-combobox" v-model="rating">
+            <select class="chpa-combobox" v-model="p.rating">
                 <option value="none"></option>
                 <option value="g">G</option>
                 <option value="pg">PG</option>
@@ -70,10 +70,12 @@
 
 </div>
 
-<div class="chpa-content-block">
-    
-    <div class="chpa-animelist">
-        <div class="chpa-anime" v-for="a in animes">
+<div class="chpa-content-block" v-show="status">
+    <div v-show="status=='loading'">Загрузка...</div>
+    <div v-show="status=='empty'">Ничего не нашлось :с<br/>Может стоит уточнить запрос?</div>
+
+    <div v-show="status=='ready'" class="chpa-animelist">
+        <div class="chpa-anime" v-for="a in animes" v-bind:key="a.shiki_id">
             <div>
                 <div>{{a.name}}</div>
                 <p>
@@ -223,30 +225,41 @@
         data() {
             return {
                 animes: [],
-                phrase: "",
-                kind: "",
+                p: {
+                    phrase: "",
+                    kind: "",
+                    status: "",
+                    franchise: "",
+                    duration: "",
+                    rating: "",
+                },
+
                 status: "",
-                franchise: "",
-                duration: "",
-                rating: ""
             };
         },
         methods: {
             search: function (event) {
+                this.status = "loading";
                 axios
                     .get('/api/animes/search', {
                         params: {
-                            phrase: this.phrase === '' ? null : this.phrase,
-                            kind: this.kind === '' ? null : this.kind,
-                            status: this.status === '' ? null : this.status,
-                            franchise: this.franchise === '' ? null : this.franchise,
-                            duration: this.duration === '' ? null : this.duration,
-                            rating: this.rating === '' ? null : this.rating
+                            phrase: this.p.phrase === '' ? null : this.p.phrase,
+                            kind: this.p.kind === '' ? null : this.p.kind,
+                            status: this.p.status === '' ? null : this.p.status,
+                            franchise: this.p.franchise === '' ? null : this.p.franchise,
+                            duration: this.p.duration === '' ? null : this.p.duration,
+                            rating: this.p.rating === '' ? null : this.p.rating
                         }
                     })
                     .then(response => {
-                        this.animes = response.data;
+                        if (response.data.length == 0) {
+                            this.status = "empty";
+                        } else {
+                            this.animes = response.data;
+                            this.status = "ready";
+                        }
                     });
+
             }
         },
         mounted () {
