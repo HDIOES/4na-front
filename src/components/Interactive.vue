@@ -1,16 +1,17 @@
 <template>
 <div>
 <div class="chpa-content-block">
+    <form v-on:submit.prevent="onSubmit" method="GET" action="/api/animes/search" >
     <div class="chpa-phrase">
         <div>Есть в названии:</div>
         <div>
-            <input class="chpa-input-text" type="text" v-model="p.phrase" />
+            <input class="chpa-input-text" type="text" name="phrase" v-model="p.phrase" />
         </div>
     </div>
     <div class="chpa-kind">
         <div>Тип:</div>
         <div>
-            <select class="chpa-combobox" v-model="p.kind">
+            <select class="chpa-combobox" name="kind" v-model="p.kind">
                 <option value=""></option>
                 <option value="ona">ona</option>
                 <option value="movie">movie</option>
@@ -23,7 +24,7 @@
     <div class="chpa-status">
         <div>Статус:</div>
         <div>
-            <select class="chpa-combobox" v-model="p.status">
+            <select class="chpa-combobox" name="status" v-model="p.status">
                 <option value=""></option>
                 <option value="anons">anons</option>
                 <option value="ongoing">ongoing</option>
@@ -34,13 +35,13 @@
     <div class="chpa-franchise">
         <div>Название франшизы</div>
         <div>
-            <input class="chpa-input-text" type="text" v-model="p.franchise" />
+            <input class="chpa-input-text" type="text" name="franchise" v-model="p.franchise" />
         </div>
     </div>
     <div class="chpa-duration">
         <div>Длительность:</div>
         <div>
-            <select class="chpa-combobox" v-model="p.duration">
+            <select class="chpa-combobox" name="duration" v-model="p.duration">
                 <option value=""></option>
                 <option value="S">S</option>
                 <option value="D">D</option>
@@ -51,7 +52,7 @@
     <div class="chpa-rating">
         <div>Рейтинг:</div>
         <div>
-            <select class="chpa-combobox" v-model="p.rating">
+            <select class="chpa-combobox" name="rating" v-model="p.rating">
                 <option value="none"></option>
                 <option value="g">G</option>
                 <option value="pg">PG</option>
@@ -64,9 +65,10 @@
     </div>
     <div class="chpa-button">
         <div>
-            <button class="chpa-input-button" v-on:click="search">Найти</button>
+            <button type="submit" class="chpa-input-button" v-on:click="search" >Найти</button>
         </div>
     </div>
+    </form>
 
 </div>
 
@@ -260,7 +262,10 @@
                         }
                     });
 
-            }
+            },
+            onSubmit () {
+                this.search();
+            },
         },
         mounted () {
 
