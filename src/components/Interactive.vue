@@ -63,7 +63,8 @@
                 </select>
             </div>
         </div>
-        <button type="submit" class="chpa-input chpa-input-button">Найти</button>
+        <button type="submit" class="chpa-input chpa-input-button">НАЙТИ</button>
+        <button type="button" class="chpa-input chpa-input-button chpa-input-random" v-on:click="random">РАНДОМ!</button>
     </form>
 
 </div>
@@ -72,7 +73,7 @@
     <div v-show="status=='loading'">Загрузка...</div>
     <div v-show="status=='empty'">Ничего не нашлось :с<br/>Может стоит уточнить запрос?</div>
 
-    <table v-show="status=='ready'" class="chpa-animelist">
+    <table v-show="animes" class="chpa-animelist">
         <tr v-for="a in animes" v-bind:key="a.shiki_id">
             <td>
                 <img v-bind:src="a.poster_url" width="48px" alt="image" />
@@ -110,6 +111,7 @@
 
         height: auto;
         padding: 0.5rem;
+        margin: 0 0.5rem;
         font-size: 1.2rem;
 
         transition: all 0.3s cubic-bezier(.25,.8,.25,1);
@@ -117,6 +119,10 @@
 
     .chpa-input-button:hover {
         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+
+    .chpa-input-random {
+        background-color: rgb(79, 193, 246);
     }
 
     form div {
@@ -155,11 +161,13 @@
                 },
 
                 status: "",
+                searchArray: false,
             };
         },
         methods: {
             search: function (event) {
                 this.status = "loading";
+                this.searchArray = true;
                 axios
                     .get('/api/animes/search', {
                         params: {
@@ -176,6 +184,35 @@
                             this.status = "empty";
                         } else {
                             this.animes = response.data;
+                            this.status = "ready";
+                        }
+                    });
+
+            },
+            random: function (event) {
+                this.status = "loading";
+                axios
+                    .get('/api/animes/random', {
+                        params: {
+                            phrase: this.p.phrase === '' ? null : this.p.phrase,
+                            kind: this.p.kind === '' ? null : this.p.kind,
+                            status: this.p.status === '' ? null : this.p.status,
+                            franchise: this.p.franchise === '' ? null : this.p.franchise,
+                            duration: this.p.duration === '' ? null : this.p.duration,
+                            rating: this.p.rating === '' ? null : this.p.rating
+                        }
+                    })
+                    .then(response => {
+                        if (response.data.length == 0) {
+                            this.status = "empty";
+                        } else {
+                            if (this.searchArray) {
+                                this.animes = [response.data];
+                                this.searchArray = false;
+                            }
+                            else {
+                                this.animes = [response.data].concat(this.animes);
+                            }
                             this.status = "ready";
                         }
                     });
