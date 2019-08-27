@@ -72,19 +72,17 @@
     <div v-show="status=='loading'">Загрузка...</div>
     <div v-show="status=='empty'">Ничего не нашлось :с<br/>Может стоит уточнить запрос?</div>
 
-    <div v-show="status=='ready'" class="chpa-animelist">
-        <div class="chpa-anime" v-for="a in animes" v-bind:key="a.shiki_id">
-            <div>
-                <div>{{a.name}}</div>
-                <p>
-                    <a v-bind:href="a.url">Перейти на shikimori.org</a>
-                </p>
-                <div>
-                    <img v-bind:src="a.poster_url" width="300px" height="400px" alt="image" />
-                </div>
-            </div>
-        </div>
-    </div>
+    <table v-show="status=='ready'" class="chpa-animelist">
+        <tr v-for="a in animes" v-bind:key="a.shiki_id">
+            <td>
+                <img v-bind:src="a.poster_url" width="48px" alt="image" />
+            </td>
+            <td>{{a.name}}</td>
+            <td>
+                <a v-bind:href="a.url">Перейти на shikimori.org</a>
+            </td>
+        </tr>
+    </table>
 
 </div>
 
@@ -114,7 +112,6 @@
         padding: 0.5rem;
         font-size: 1.2rem;
 
-        
         transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     }
 
@@ -127,21 +124,14 @@
     }
 
     .chpa-animelist {
-        display: block;
-        max-width: 1000px;
-        left: 550px;
-        top: -550px;
+        vertical-align: middle;
     }
-    .chpa-anime {
-        display: inline-flex;
-        margin: 5px;
-        height: 500px;
-    }
-    .chpa-anime div div {
-        width: 300px;
-        display: block;
-        height: 50px;
-        word-break: break-all;
+    
+    .chpa-animelist tr {
+        height: 100px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.2);
+        border-bottom-width: 1px;
     }
 
 </style>
@@ -185,6 +175,8 @@
                         if (response.data.length == 0) {
                             this.status = "empty";
                         } else {
+                            //TODO Ограничение на список тайтлов, пока грубый, т.к. меню навигации всё равно нет
+                            if (response.data.length > 10) {response.data.length = 10}
                             this.animes = response.data;
                             this.status = "ready";
                         }
