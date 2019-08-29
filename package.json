@@ -1,8 +1,8 @@
 {
-  "name": "4na-front",
-  "version": "0.0.1",
-  "description": "4na front",
-  "main": "index.js",
+  "name": "su4na-gui-web-main",
+  "version": "0.1.0",
+  "description": "Web GUI for 4na.su project",
+  "main": "main.js",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build"

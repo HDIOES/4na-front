@@ -7,7 +7,7 @@
             <ul><li>
                 <a href="">Оставить новость</a>
             </li><li>
-                <a href="https://github.com/HDIOES/4na-front" target="_blank">GITHUB</a>
+                <a href="https://github.com/orgs/HDIOES/teams/4na-su/repositories" target="_blank">GitHub</a>
             </li>
             </ul>
             
